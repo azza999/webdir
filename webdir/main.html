@@ -1,0 +1,71 @@
+<html><head>
+	<meta charset="utf-8">
+	<meta name="description" content="webdir">
+	<meta name="keywords" content="directory, webdir, web, file,file system">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>webdir</title>
+	<link rel="stylesheet" href="webdir.css">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+</head>
+<body>
+	<header class="header">WebDir<img src="./imgs/webspider.png" alt=""></header>
+	<main class="main">
+		<aside class="favorite">
+			<div class="favorite-item">
+				<span class="favorite-name">폴더 이름</span><i class="favorite-icon fas fa-folder-open"></i>
+			</div>
+			<div class="favorite-item">
+				<span class="favorite-name">폴더 이름</span><i class="favorite-icon fas fa-folder"></i>
+			</div>
+			<div class="favorite-item">
+				<span class="favorite-name">폴더 이름</span><i class="favorite-icon fas fa-folder"></i>
+			</div>
+		</aside>
+		<div class="main-wrap">
+			<div class="dir-path">
+				현재위치 : <span class="dir-path-now"></span>
+				<div class="loading" id="loading" style="opacity: 0;">
+					<i class="loading-icon fas fa-spinner fa-pulse"></i> <span class="loading-text">Loading . . .</span>
+				</div>
+			</div>
+			<div class="dirList" id="dirList">
+				<div class="dirBack"></div>
+			</div>
+		</div>
+	</main>
+	<div class="modal">
+		<div class="modal-background"></div>
+		<div class="textEditor" id="textEditor" style="visibility: hidden; opacity: 0">
+			<div class="textEditor-header">
+				<span class="textEditor-title">MainController.php</span>
+			</div>
+			<div class="textEditor-body">
+				<textarea class="textEditor-textarea" name="textEditor-textarea" id="textEditor-textarea"></textarea>
+			</div>
+			<div class="textEditor-footer">
+				<div class="textEditor-cancel">취소</div><div class="textEditor-save">저장</div>
+			</div>
+		</div>
+		<div class="prompt" id="prompt" style="visibility: hidden; opacity: 0">
+			<div class="prompt-header">
+				<span class="prompt-title"></span>
+			</div>
+			<div class="prompt-body">
+				<span class="prompt-name"></span><input class="prompt-input" name="prompt-input" id="prompt-input">
+			</div>
+			<div class="prompt-footer">
+				<div class="prompt-cancel">취소</div><div class="prompt-ok"></div>
+			</div>
+		</div>
+	</div>
+	<div class="contextMenu" style="display: none;">
+		<div class="contextMenu-item contextMenu-download">다운로드</div>
+		<div class="contextMenu-item contextMenu-delete">삭제</div>
+		<div class="ContextMenu-item ContextMenu-file">파일추가</div>
+		<div class="ContextMenu-item ContextMenu-folder">폴더추가</div>
+	</div>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script type="text/javascript" src="./js/webdir.js"></script>
+
+</body>
+</html>
