@@ -6,9 +6,9 @@ const $dirList = $('#dirList');
 const $nowDir = $('.dir-path-now');
 const $contextMenu = $('.contextMenu');
 
-const getLocationFromURL = ()=>new URL(location.href).searchParams.get('location').replace(/\%4/g,'/');
+const getLocationFromURL = ()=>(new URL(location.href).searchParams.get('location') || '/var/www/html').replace(/\s/g,'/') ;
 
-let nowDir = getLocationFromURL() || '/var/www/html';
+let nowDir = getLocationFromURL();
 let prevDir = nowDir;
 
 // ajax post
@@ -16,11 +16,11 @@ const changeDir = newDir => {
 	Loading.start();
 	if (nowDir == newDir) {
 		nowDir = newDir;
-		history.replaceState({page: 'webdir'},'webdir','/webdir/main.html?location='+newDir.replace(/\//g,'%4'));
+		history.replaceState({page: 'webdir'},'webdir','/WebDir/main.html?location='+newDir.replace(/\//g,'+'));
 		console.log('replace');
 	} else {
 		nowDir = newDir;
-		history.pushState({page: 'webdir'},'webdir','/webdir/main.html?location='+newDir.replace(/\//g,'%4'));
+		history.pushState({page: 'webdir'},'webdir','/WebDir/main.html?location='+newDir.replace(/\//g,'+'));
 		console.log('push');
 	}
 	changeList();
