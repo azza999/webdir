@@ -11,8 +11,10 @@ const getLocationFromURL = ()=>(new URL(location.href).searchParams.get('locatio
 let nowDir = getLocationFromURL();
 let prevDir = nowDir;
 
-// ajax post
+// ajax post (actions)
+
 const changeDir = newDir => {
+	newDir = newDir.replace('//','/');
 	Loading.start();
 	if (nowDir == newDir) {
 		nowDir = newDir;
@@ -114,8 +116,9 @@ const downloadFile = (dir, name) => {
 	document.body.appendChild(form);
 	console.log(dir,name);
 	form.submit();
-} // 
+}
 
+// 전역객체
 
 const Loading = {
 	$Loading: $('#loading'),
@@ -267,8 +270,6 @@ const ContextMenu = {
 	},
 }
 
-
-
 $dirList.on('dblclick','[data-type="folder"]',e=>{
 	changeDir(e.currentTarget.dataset['target']);
 });
@@ -284,6 +285,8 @@ $dirList.on('contextmenu','[data-type="folder"],[data-type="file"],.dirBack',e=>
 		ContextMenu.open(e);
 	}
 });
+
+//download
 
 ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
   window.addEventListener(eventName, e=>e.preventDefault());
@@ -312,9 +315,32 @@ window.addEventListener('drop', e=>{
 	});
 });
 
+function chk_pw() {
+	let id = $('#id').val();
+	let pw = $('#pw').val();
+	$.post('check_pw.php',{id:id,pw:pw},(result)=>{
+		console.log(result);
+		if (result == 1) {
+			$('.pwchkModal').css({
+				visibility: 'hidden',
+				opacity: 0
+			})
+			$(window).unbind('keydown.pwchkModal');
+			changeList(nowDir);
+		} else {
+			alert('아이디나 비밀번호가 잘못되었습니다!');
+		}
+	});
+}
+
 $(document).ready(e=>{
 	TextEditor.initEvent();
 	Prompt.initEvent();
 	ContextMenu.initEvent();
-	changeList(nowDir);
+	$(window).on('keydown.pwchkModal',e=>{
+		if(e.keyCode == 13) chk_pw();
+	})
+	$('.pwchkModal-btn').on('click.pwchkModal',e=>{
+		chk_pw();
+	});
 })

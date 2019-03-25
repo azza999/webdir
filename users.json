@@ -1,0 +1,24 @@
+{
+	"users": [
+		{
+			"id" : "root",
+			"pw" : "abe8e761ba817dcf2b4f9e78ede3752747a1a8949ae57d623f31e87feab69514",
+			"permission" : "root"
+		},
+		{
+			"id" : "user1",
+			"pw" : "22f29f1b11fc2d4545086d80f901621be84194bd3e9d8f79882e9c13871d34cd",
+			"permission" : "member"
+		},
+		{
+			"id" : "user2",
+			"pw" : "cee1c683c89d412aeb0a3351977d47876f4cd97835632ddb57abab78d3607495",
+			"permission" : "member"
+		},
+		{
+			"id" : "guest",
+			"guest" : "be185b9863b4a07d05cc492da63dc116c91712a628d6bf128c379a1f49b2f024",
+			"permission" : "guest"
+		}
+	]
+}

@@ -1,5 +1,12 @@
 <?php 
 
+include 'chk_permission.php';
+if(!chk_permission('root')) {
+	echo 'permission error';
+	echo "your permission : ".$_SESSION['__webdir']['permission'];
+	return false;
+}
+
 function delete($dir)
 {
 	if(is_dir($dir)) {
